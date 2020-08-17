@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app1';
+  openSidenav:boolean = false;
+
+  toggle(){
+    this.openSidenav = !this.openSidenav;
+  }
 }

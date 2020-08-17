@@ -1,4 +1,15 @@
 <!-- <button mat-icon-button>
-  <mat-icon>home</mat-icon>
+  <mat-icon color="primary">home</mat-icon>
 </button> -->
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation">
+   <app-sidenav-list (closeSidenav)="sidenav.close()"></app-sidenav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- <button (click)="nav.toggle()">Show SideNav</button> -->
+    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
