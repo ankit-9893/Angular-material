@@ -1,6 +1,7 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
+import { NewUserComponent } from './../../user/new-user/new-user.component';
+import { NewEmployeeComponent } from './../../employee/new-employee/new-employee.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav-list',
@@ -9,29 +10,36 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class SidenavListComponent implements OnInit {
   @Output() closeSidenav = new EventEmitter<void>();
-  isAuth = false;
-  authSubscription: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(private dialog: MatDialog) {}
 
-  ngOnInit() {
-    this.authSubscription = this.authService.authChange.subscribe(
-      (authStatus) => {
-        this.isAuth = authStatus;
-      }
-    );
-  }
+  ngOnInit(): void {}
 
   onClose() {
     this.closeSidenav.emit();
   }
 
-  onLogout() {
+  addUser() {
     this.onClose();
-    this.authService.logout();
+    console.log('in mat lo');
+    const dialogRef = this.dialog.open(NewUserComponent, {
+      height: '60%',
+      width: '50%',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 
-  ngOnDestroy() {
-    this.authSubscription.unsubscribe();
+  addEmployee() {
+    this.onClose();
+    const dialogRef = this.dialog.open(NewEmployeeComponent, {
+      height: '60%',
+      width: '60%',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 }

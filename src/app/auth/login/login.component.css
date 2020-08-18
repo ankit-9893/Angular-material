@@ -1,4 +1,20 @@
-mat-form-field {
+* {
+  margin: 0px;
+}
+
+.material-icons .md-30 {
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+
+
+.login-card {
+  margin-top: 130px;
+  width: 450px;
+  max-height: 100%;
+  /* background-color: rgb(199, 199, 199); */
+}
+
+.form-field {
     width: 300px;
-  }
-  
+}

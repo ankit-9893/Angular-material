@@ -1,24 +1,34 @@
-<section>
-    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" [formGroup]="loginForm"
-        (ngSubmit)="onSubmit()">
-        <mat-form-field>
-            <input type="email" matInput placeholder="Your email" name="email" email formControlName="email">
-            <mat-hint>Please enter a valid email.</mat-hint>
-            <mat-error>Invalid or missing email.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input type="password" matInput placeholder="Your password" name="password" minlength="6" formControlName="password">
-            <mat-hint>Please enter your password.</mat-hint>
-            <mat-error>Missing password.</mat-error>
-        </mat-form-field>
-        <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
-    </form>
-</section>
+<section fxLayout fxLayoutAlign="center center">
+    <mat-card class="login-card">
+        <mat-card-title fxLayoutAlign="center">
+            <button mat-fab color="accent">
+                <mat-icon class="material-icons md-30">lock</mat-icon>
+            </button>
+        </mat-card-title>
+        <mat-card-subtitle fxLayoutAlign="center">
+            Sign In
+        </mat-card-subtitle>
+        <mat-content fxLayoutAlign="center">
+            <form fxLayout="column" fxLayoutGap="10px">
+                <mat-form-field class="form-field" color="white">
+                    <mat-label>Email</mat-label>
+                    <input type="email" email matInput placeholder="Enter Email" value="" required>
+                </mat-form-field>
 
-<!-- <ol>
-    <li>Add an email and password field (with Material Components of course)</li>
-    <li>Add validation (email => required and email, password => required)</li>
-    <li>Show errors and hints</li>
-    <li>Make form submittable and disable button if invalid</li>
-    <li>BONUS: Do all of that by using the reactive approach!</li>
-  </ol> -->
+                <mat-form-field class="form-field">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput placeholder="Enter Password" [type]="hide ? 'password' : 'text'"
+                        required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <button mat-raised-button color="primary">
+                    Login
+                </button>
+            </form>
+
+        </mat-content>
+    </mat-card>
+</section>

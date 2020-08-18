@@ -5,5 +5,14 @@ a {
 
 a:hover,
 a:active {
-  color: lightgray;
+  /* text-shadow: 1em; */
+}
+
+button {
+  border-style: none;
+  background-color: inherit;
+}
+
+button:hover {
+  background-color: inherit;
 }

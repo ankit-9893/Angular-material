@@ -1,0 +1,43 @@
+<section>
+    <div fxLayout="row">
+        <div fxFlex fxLayoutAlign="flex-start">
+            <p style="font-size: 18px;">Employee Details</p>
+        </div>
+        <!-- <div style="width: 70%;"></div> -->
+        <div fxFlex fxLayoutAlign="flex-end">
+            <button class="close-button" [mat-dialog-close]="true" mat-mini-fab mat-button>
+                <mat-icon >
+                    close
+                </mat-icon>
+            </button>
+        </div>
+    </div>
+    <div fxLayoutAlign="center center">
+        <form fxlayout="column" fxLayoutGap="20px">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input type="text" matInput required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Contact NO</mat-label>
+                <input type="text" matInput required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Department</mat-label>
+                <input type="text" matInput required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="text" matInput required>
+            </mat-form-field>
+            <mat-form-field class="form-address">
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="Address" required> </textarea>
+            </mat-form-field>
+
+            <button class="form-submit" mat-raised-button color="primary">
+                Add
+            </button>
+        </form>
+    </div>
+</section>

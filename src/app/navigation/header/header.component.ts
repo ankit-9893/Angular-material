@@ -1,39 +1,32 @@
-import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
-import { AuthService } from 'src/app/auth/auth.service';
-import { Subscription } from 'rxjs';
-
+import { NewUserComponent } from './../../user/new-user/new-user.component';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
-
-  isAuth = false;
-  authSubscription: Subscription;
-
+export class HeaderComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>();
+  @Output() newEmployee = new EventEmitter<void>();
 
-  constructor(private authService: AuthService) { }
+  constructor(private dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    this.authSubscription = this.authService.authChange.subscribe(
-      authStatus => {
-        this.isAuth = authStatus;
-      }
-    );
-  }
+  ngOnInit(): void {}
 
-  onToggleSidenav(){
+  onToggleSidenav() {
     this.sidenavToggle.emit();
   }
 
-  onLogout() {
-    this.authService.logout();
-  }
-
-  ngOnDestroy(): void{
-    this.authSubscription.unsubscribe();
+  addEmployee() {
+    console.log('in mat lo');
+    const dialogRef = this.dialog.open(NewUserComponent, {
+      height: '60%',
+      width: '50%',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 }

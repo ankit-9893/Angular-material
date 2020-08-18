@@ -1,0 +1,41 @@
+<section>
+    <div fxLayout="row">
+        <div fxFlex fxLayoutAlign="flex-start">
+            <p style="font-size: 20px;">New User</p>
+        </div>
+        <!-- <div style="width: 80%;"></div> -->
+        <div fxFlex fxLayoutAlign="flex-end">
+            <button class="close-button" [mat-dialog-close]="true" mat-mini-fab mat-button>
+                <mat-icon>
+                    close
+                </mat-icon>
+            </button>
+        </div>
+    </div>
+    <div>
+        <form fxLayout="column" fxLayoutGap="10px">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input type="text" matInput required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Select Role</mat-label>
+                <mat-select required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let role of roles">
+                        {{ role }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary">
+                Submit
+            </button>
+        </form>
+
+    </div>
+</section>
